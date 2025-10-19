@@ -3,4 +3,5 @@ dotenv.config();
 export default {
     port : process.env.PORT ,
     db_url:process.env.DB_URL ,
+    jwt_token : process.env.JWT_SECRET 
 }
