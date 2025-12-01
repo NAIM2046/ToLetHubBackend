@@ -7,11 +7,12 @@ import {
   deleteProperty,
   getPropertiesByUser,
 } from "./property.controller";
+import { authenticateUser } from "../users/user.middleware";
 
 const router = express.Router();
 
 // 🏠 Create new property
-router.post("/", createProperty);
+router.post("/", authenticateUser, createProperty);
 
 // 📋 Get all properties
 router.get("/", getAllProperties);
@@ -20,12 +21,12 @@ router.get("/", getAllProperties);
 router.get("/:id", getPropertyById);
 
 // ✏️ Update property by ID
-router.put("/:id", updateProperty);
+router.put("/:id",authenticateUser , updateProperty);
 
 // ❌ Delete property by ID
-router.delete("/:id", deleteProperty);
+router.delete("/:id",authenticateUser, deleteProperty);
 
 // 👤 Get all properties posted by a specific user
-router.get("/user/:userId", getPropertiesByUser);
+router.get("/user/:userId",authenticateUser, getPropertiesByUser);
 
 export default router;

@@ -21,12 +21,14 @@ const findUserByEmail = async(email:string)=>{
 const findUserByGoogleId = async (googleId: string) => {
   return await User.findOne({ googleId });
 };
+const findUserById = async (id: string) => {
+  return await User.findById(id);
+}
 
 export const userServices =  {
     createUser ,
     findUserByEmail ,
     findUserByGoogleId ,
-    findUserByIdentifier
-
-
+  findUserByIdentifier,
+  findUserById
 }

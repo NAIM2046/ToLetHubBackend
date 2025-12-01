@@ -49,7 +49,7 @@ export type TProperty = {
   // ⭐ Optional / Future
   isVerified?: boolean;
   views?: number;
-  favorites?: string[];               // user IDs who saved this post
+            
   coordinates?: {
     lat: number;
     lng: number;

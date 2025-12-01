@@ -12,7 +12,10 @@ import { TProperty } from "./property.interface";
 // 🏠 Create new property
 export const createProperty = async (req: Request, res: Response): Promise<void> => {
   try {
-    const newProperty : TProperty = await createPropertyService(req.body);
+    const userId = (req as any).user.id;
+    req.body.userId = userId;
+    const newProperty: TProperty = await createPropertyService(req.body);
+    
     res.status(201).json({ message: "Property created successfully", property: newProperty });
   } catch (error: any) {
     res.status(400).json({ message: error.message });
